@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+   <meta charset="UTF-8">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Гадание От МАРИНЫ VIP ЛЮКС</title>
+
+   <style>
+
+     * {
+
+       margin: 0;
+
+       padding: 0;
+
+       box-sizing: border-box;
+
+       -webkit-tap-highlight-color: transparent;
+
+     }
+
+     
+
+     body {
+
+       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+       background: linear-gradient(135deg, #8a2be2, #4b0082);
+
+       min-height: 100vh;
+
+       display: flex;
+
+       flex-direction: column;
+
+       align-items: center;
+
+       justify-content: center;
+
+       padding: 15px;
+
+       color: #fff;
+
+       text-align: center;
+
+       transition: background 1.5s ease;
+
+     }
+
+     
+
+     body.halloween-theme {
+
+       background: linear-gradient(135deg, #1a1a1a, #000000);
+
+     }
+
+     
+
+     .container {
+
+       width: 100%;
+
+       max-width: 400px;
+
+       background: rgba(0, 0, 0, 0.6);
+
+       backdrop-filter: blur(10px);
+
+       border-radius: 15px;
+
+       padding: 20px;
+
+       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+
+       position: relative;
+
+       z-index: 10;
+
+     }
+
+     
+
+     h1 {
+
+       margin-bottom: 12px;
+
+       font-size: 20px;
+
+       color: #ffd700;
+
+       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+     }
+
+     
+
+     .subtitle {
+
+       margin-bottom: 20px;
+
+       color: #e6e6fa;
+
+       font-size: 14px;
+
+       line-height: 1.4;
+
+     }
+
+     
+
+     .image-container {
+
+       width: 100%;
+
+       height: 220px;
+
+       margin: 15px 0;
+
+       overflow: hidden;
+
+       border-radius: 12px;
+
+       position: relative;
+
+       display: flex;
+
+       justify-content: center;
+
+       align-items: center;
+
+       background: rgba(0, 0, 0, 0.3);
+
+     }
+
+     
+
+     .image-slide {
+
+       max-width: 95%;
+
+       max-height: 95%;
+
+       object-fit: contain;
+
+       opacity: 0;
+
+       transition: opacity 0.5s ease;
+
+       position: absolute;
+
+       border-radius: 8px;
+
+       display: none;
+
+     }
+
+     
+
+     .image-slide.active {
+
+       opacity: 1;
+
+       display: block;
+
+     }
+
+     
+
+     .start-button {
+
+       display: inline-block;
+
+       background: linear-gradient(135deg, #ffd700, #ff8c00);
+
+       color: #4b0082;
+
+       padding: 14px 30px;
+
+       border-radius: 25px;
+
+       font-weight: bold;
+
+       font-size: 16px;
+
+       text-decoration: none;
+
+       border: none;
+
+       cursor: pointer;
+
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+       transition: all 0.3s ease;
+
+       -webkit-user-select: none;
+
+       user-select: none;
+
+       margin: 10px 0;
+
+     }
+
+     
+
+     .start-button:active {
+
+       transform: scale(0.95);
+
+     }
+
+     
+
+     .start-button.disabled {
+
+       opacity: 0.7;
+
+       pointer-events: none;
+
+     }
+
+     
+
+     .curse-button {
+
+       display: none;
+
+       background: linear-gradient(135deg, #ff0000, #8b0000);
+
+       color: #ffffff;
+
+       padding: 14px 20px;
+
+       border-radius: 25px;
+
+       font-weight: bold;
+
+       font-size: 14px;
+
+       text-decoration: none;
+
+       border: none;
+
+       cursor: pointer;
+
+       box-shadow: 0 4px 12px rgba(139, 0, 0, 0.5);
+
+       transition: all 0.3s ease;
+
+       -webkit-user-select: none;
+
+       user-select: none;
+
+       margin: 10px 0;
+
+       text-align: center;
+
+       animation: pulse-red 2s infinite;
+
+     }
+
+     
+
+     .status {
+
+       margin-top: 15px;
+
+       font-size: 14px;
+
+       color: #ffd700;
+
+       min-height: 40px;
+
+       display: flex;
+
+       align-items: center;
+
+       justify-content: center;
+
+     }
+
+     
+
+     .curse-message {
+
+       display: none;
+
+       background: #8b0000;
+
+       color: #ff4500;
+
+       padding: 12px;
+
+       border-radius: 10px;
+
+       margin: 15px 0;
+
+       font-weight: bold;
+
+       text-shadow: 0 0 5px #000;
+
+       border: 2px solid #ff4500;
+
+       box-shadow: 0 0 15px #ff0000;
+
+       animation: pulse 2s infinite;
+
+       order: 1;
+
+     }
+
+     
+
+     .buttons-container {
+
+       display: flex;
+
+       flex-direction: column;
+
+       order: 2;
+
+     }
+
+     
+
+     .curse-link {
+
+       color: #ffd700;
+
+       text-decoration: none;
+
+       font-weight: bold;
+
+       display: block;
+
+       margin-top: 8px;
+
+       background: #000;
+
+       padding: 8px;
+
+       border-radius: 5px;
+
+     }
+
+     
+
+     /* Хэллоуинские элементы */
+
+     .halloween-element {
+
+       position: absolute;
+
+       font-size: 24px;
+
+       z-index: 5;
+
+       pointer-events: none;
+
+       display: none;
+
+     }
+
+     
+
+     body.halloween-theme .halloween-element {
+
+       display: block;
+
+     }
+
+     
+
+     /* Анимации */
+
+     @keyframes float {
+
+       0%, 100% { transform: translateY(0) rotate(0deg); }
+
+       50% { transform: translateY(-15px) rotate(5deg); }
+
+     }
+
+     
+
+     @keyframes pulse {
+
+       0%, 100% { opacity: 1; }
+
+       50% { opacity: 0.8; }
+
+     }
+
+     
+
+     @keyframes pulse-red {
+
+       0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(139, 0, 0, 0.5); }
+
+       50% { transform: scale(1.05); box-shadow: 0 6px 16px rgba(255, 0, 0, 0.7); }
+
+     }
+
+     
+
+     .pumpkin1 {
+
+       top: 8%; left: 5%; animation: float 6s infinite ease-in-out;
+
+     }
+
+     .pumpkin2 {
+
+       top: 12%; right: 7%; animation: float 7s infinite ease-in-out;
+
+     }
+
+     .bat1 {
+
+       top: 20%; left: 8%; animation: float 5s infinite ease-in-out;
+
+     }
+
+     .bat2 {
+
+       top: 30%; right: 12%; animation: float 8s infinite ease-in-out;
+
+     }
+
+   </style>
+
+</head>
+
+<body>
+
+   <!-- Хэллоуинские элементы -->
+
+   <div class="halloween-element pumpkin1">??</div>
+
+   <div class="halloween-element pumpkin2">??</div>
+
+   <div class="halloween-element bat1">??</div>
+
+   <div class="halloween-element bat2">??</div>
+
+
+
+   <div class="container">
+
+     <h1>ГАДАНИЕ ОТ МАРИНЫ VIP ЛЮКС</h1>
+
+     <p class="subtitle">Раскройте тайны будущего с помощью БЕСПЛАТНОГО гадания</p>
+
+     
+
+     <div class="image-container">
+
+       <!-- Ваши изображения -->
+
+       <img src="https://i.postimg.cc/RhXFpyP1/D11-AF7-B9-1-E5-C-4-F60-BD6-E-D0-BA068-E81-B0.jpg" class="image-slide" alt="Картина гадания">
+
+       <img src="https://i.postimg.cc/2j2SYpwh/BA03-DB75-B9-FF-4-D61-9-BF5-5-BE9156-A2946.jpg" class="image-slide" alt="Картина гадания">
+
+       <img src="https://i.postimg.cc/4yN4cwJY/D71971-D4-CF0-C-4-CAB-9343-C27-C1-E641-CCB.jpg" class="image-slide" alt="Картина гадания">
+
+       <img src="https://i.postimg.cc/hvyD1xjp/F21-AF3-A1-1-AEB-4883-9-AE2-AA98-BC809434.jpg" class="image-slide" alt="Картина гадания">
+
+       <img src="https://i.postimg.cc/0QC2rhqg/FC9-EBD5-E-7-E2-D-461-C-8-A9-E-605-C51-E3607-B.jpg" class="image-slide" alt="Картина гадания">
+
+       <!-- Финальная картинка -->
+
+       <img src="https://i.postimg.cc/vTQ7VRg5/E73-C99-C8-6097-4-A79-B06-E-BBC57-C1-AB82-F.jpg" class="image-slide" alt="Финальная картина">
+
+     </div>
+
+     
+
+     <div class="buttons-container">
+
+       <div class="curse-message" id="curseMessage">
+
+         ВЫ ПРОКЛЯТЫ!
+
+       </div>
+
+       
+
+       <div class="start-button" id="startButton">НАЧАТЬ ГАДАНИЕ</div>
+
+       <a href="https://t.me/mihi_inclino_te" class="curse-button" id="curseButton">ОШИБКА! ПОЖАЛУЙСТА, НЕ НАЖИМАЙТЕ НА ЭТУ КНОПКУ!</a>
+
+     </div>
+
+     
+
+     <p class="status" id="statusText">Начните Гадание!</p>
+
+   </div>
+
+
+
+   <script>
+
+     // Получаем элементы
+
+     const startButton = document.getElementById('startButton');
+
+     const curseButton = document.getElementById('curseButton');
+
+     const statusText = document.getElementById('statusText');
+
+     const curseMessage = document.getElementById('curseMessage');
+
+     const slides = document.querySelectorAll('.image-slide');
+
+     const body = document.body;
+
+     
+
+     // Переменные для управления гаданием
+
+     let isRunning = false;
+
+     let currentSlide = 0;
+
+     let switchCount = 0;
+
+     const totalSwitches = 20;
+
+     const finalSlideIndex = 5; // Индекс финального слайда
+
+     
+
+     // Функция для запуска гадания
+
+     function startFortune() {
+
+       if (isRunning) return;
+
+       
+
+       isRunning = true;
+
+       startButton.classList.add('disabled');
+
+       statusText.textContent = "Гадание в процессе...";
+
+       curseMessage.style.display = 'none';
+
+       
+
+       // Показываем все карты
+
+       slides.forEach(slide => {
+
+         slide.style.display = 'block';
+
+       });
+
+       
+
+       // Показываем первую карту
+
+       slides[0].classList.add('active');
+
+       
+
+       // Быстрое перелистывание в начале
+
+       let fastInterval = setInterval(function() {
+
+         // Скрываем текущий слайд
+
+         slides[currentSlide].classList.remove('active');
+
+         
+
+         // Переходим к следующему слайду (кроме финального)
+
+         currentSlide = (currentSlide + 1) % (slides.length - 1);
+
+         
+
+         // Показываем новый слайд
+
+         slides[currentSlide].classList.add('active');
+
+         
+
+         // Увеличиваем счетчик
+
+         switchCount++;
+
+         
+
+         // После быстрого старта переходим к медленному
+
+         if (switchCount >= 8) {
+
+           clearInterval(fastInterval);
+
+           startSlowAnimation();
+
+         }
+
+       }, 100);
+
+     }
+
+     
+
+     // Медленная анимация перед остановкой
+
+     function startSlowAnimation() {
+
+       const slowInterval = setInterval(function() {
+
+         // Скрываем текущий слайд
+
+         slides[currentSlide].classList.remove('active');
+
+         
+
+         // Переходим к следующему слайду (кроме финального)
+
+         currentSlide = (currentSlide + 1) % (slides.length - 1);
+
+         
+
+         // Показываем новый слайд
+
+         slides[currentSlide].classList.add('active');
+
+         
+
+         // Увеличиваем счетчик
+
+         switchCount++;
+
+         
+
+         // Останавливаемся когда достигли максимума
+
+         if (switchCount >= totalSwitches) {
+
+           clearInterval(slowInterval);
+
+           finishFortune();
+
+         }
+
+       }, 200);
+
+     }
+
+     
+
+     // Завершение гадания
+
+     function finishFortune() {
+
+       // Скрываем все слайды
+
+       slides.forEach(slide => slide.classList.remove('active'));
+
+       
+
+       // Показываем финальный слайд
+
+       slides[finalSlideIndex].classList.add('active');
+
+       
+
+       // Включаем хэллоуинскую тему
+
+       body.classList.add('halloween-theme');
+
+       
+
+       // Показываем сообщение о проклятии
+
+       curseMessage.style.display = 'block';
+
+       
+
+       // Показываем кнопку проклятия вместо стартовой
+
+       startButton.style.display = 'none';
+
+       curseButton.style.display = 'inline-block';
+
+       
+
+       // Обновляем текст статуса
+
+       statusText.textContent = "Ваша судьба решена!";
+
+       
+
+       isRunning = false;
+
+       switchCount = 0;
+
+     }
+
+     
+
+     // Обработчики для кнопки
+
+     startButton.addEventListener('click', startFortune);
+
+     startButton.addEventListener('touchstart', function(e) {
+
+       e.preventDefault();
+
+       startFortune();
+
+     }, {passive: false});
+
+     
+
+     // Предзагрузка изображений
+
+     window.addEventListener('load', function() {
+
+       slides.forEach(slide => {
+
+         const img = new Image();
+
+         img.src = slide.src;
+
+       });
+
+     });
+
+   </script>
+
+</body>
+
+</html>
